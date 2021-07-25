@@ -1,0 +1,56 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProdutoRepository">
+
+    <resultMap id="resultProdutoResponse" type="com.riachuello.teste.DTO.response.ProdutosPorLojaResponse">
+
+        <result property="codigoLoja" column="codigo_loja" />
+
+        <collection property="produtos" ofType="com.riachuello.teste.DTO.response.ProdutoDTO">
+            <id property="codigo" column="codigo"/>
+            <result property="sku" column="sku"/>
+            <result property="titulo" column="titulo"/>
+            <result property="descricao" column="descricao"/>
+            <result property="dimensao" column="dimensao"/>
+            <result property="estoque" column="estoque"/>
+            <result property="preco" column="preco"/>
+        </collection>
+
+    </resultMap>
+
+    <select id="findByProdutoByLoja"  resultMap="resultProdutoResponse">
+        SELECT ll.codigo as codigo_loja, p.* FROM PRODUTOS p
+            inner join lojas l on p.codigo = l.codigo_produto
+            inner join localidades ll on ll.codigo = l.codigo_localidade
+        where l.codigo_localidade = #{codigoLoja}
+        order by l.codigo_localidade;
+    </select>
+
+    <select id="findByProdutoPrecoByLoja"  resultMap="resultProdutoResponse">
+        SELECT ll.codigo as codigo_loja, p.* FROM PRODUTOS p
+            inner join lojas l on p.codigo = l.codigo_produto
+            inner join localidades ll on ll.codigo = l.codigo_localidade
+        where p.preco >= 0
+        order by l.codigo_localidade;
+    </select>
+
+
+    <select id="findByProdutoEstoqueByLoja"  resultMap="resultProdutoResponse">
+        SELECT ll.codigo as codigo_loja, p.* FROM PRODUTOS p
+        inner join lojas l on p.codigo = l.codigo_produto
+        inner join localidades ll on ll.codigo = l.codigo_localidade
+        where p.estoque > 0
+
+        <if test="sku != null">
+            AND p.sku like #{sku}
+        </if>
+
+        order by l.codigo_localidade;
+    </select>
+
+
+
+
+</mapper>
