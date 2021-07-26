@@ -1,6 +1,6 @@
-##Teste Riachuello
+<h1> Teste Riachuello </h1>
 
-###Tecnologias:
+<h2>Tecnologias:</h2>
 
 <li>Java 11</li>
 <li>Spring-boot</li>
@@ -15,17 +15,17 @@ APLICAÇÃO REST usando padrão MVC
 [OBS.:]
 Para esse case usei o Java 11 e escolhi o banco de dados H2, pela facilidade e a agilidade que ele proporciona (* podendo ser alterado facilmente por outro bando de dados dado que não usei nenhuma particularidade de banco).
 
-###Acesso ao Banco de Dados
+<h2>Acesso ao Banco de Dados </h2>
 
 para acessa-lo basta apenas acessar a seguinte URL: http://localhost:8080/h2-console
 
-###Acesso ao Swagger
+<h2>Acesso ao Swagger </h2>
 URL: http://localhost:8080/swagger-ui.html
 
-###___________________________________________________________________
+<h2>___________________________________________________________________ </h2>
 
 
-##Cadastro de Produto
+<h2>Cadastro de Produto </h2>
 
 POST - http://localhost:8080/produtos/save
 
@@ -44,7 +44,7 @@ payload:
 o cadastro de produto é feito de forma individual ou seja cada loja deverá realizar o cadastro do produto, passando o código da localidade.
 o sku é o código que identifica o produto.
 
-##consulta todos os produtos com estoque de uma loja
+<h2>consulta todos os produtos com estoque de uma loja </h2>
 
 GET - http://localhost:8080/produtos/findByLoja/L200
 
@@ -79,7 +79,7 @@ GET - http://localhost:8080/produtos/findByLoja/L200
 Exibe todos os produtos de uma determinada loja
 
 
-##consulta todos os produtos que tem preço vigente por loja
+<h2>consulta todos os produtos que tem preço vigente por loja </h2>
 
 GET - http://localhost:8080/produtos/findPrecoByLoja
 
@@ -141,7 +141,7 @@ GET - http://localhost:8080/produtos/findPrecoByLoja
 
 Exibe todos os produtos com preço maior que ZERO por loja
 
-## listar todos os estoques do produto, saber em qual loja aquele produto está disponível
+<h2> listar todos os estoques do produto, saber em qual loja aquele produto está disponível </h2>
 
 GET - http://localhost:8080/produtos/findEstoqueByLoja/TVSM001
 
